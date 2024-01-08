@@ -13,9 +13,9 @@ derive = ["serde-reflect-derive"]
 [dependencies]
 erased-serde = "0.3"
 serde = "1.0"
-serde-reflect-derive = { path = "./derive", optional = true }
+serde-reflect-derive = { path = "./derive", optional = true, version = "0.1" }
 memoffset = "0.6"
-slice_dst = "1.5"
+slice-dst = "1.5"
 
 [dev-dependencies]
 proptest-derive = "0.2"

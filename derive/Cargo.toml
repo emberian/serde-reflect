@@ -10,7 +10,7 @@ edition = "2018"
 proc-macro = true
 
 [dependencies]
-syn = "*"
+syn = "1"
 quote = "*"
 proc-macro2 = "*"
 itertools = "0.10"

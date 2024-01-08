@@ -207,7 +207,6 @@ impl<'a> DeriveReflect<'a> {
                 quote! { _reflect::DataShape::Tuple(#tup_elts) }
             }
 
-            syn::Type::__Nonexhaustive => unreachable!(),
             syn::Type::BareFn(_) => panic!("don't reflect over function pointers"),
             m @ syn::Type::ImplTrait(_)
             | m @ syn::Type::TraitObject(_)
@@ -218,6 +217,7 @@ impl<'a> DeriveReflect<'a> {
             }
             syn::Type::Ptr(_) => panic!("don't reflect over raw pointers"),
             syn::Type::Never(_) => panic!("don't reflect over never"),
+            _ => unreachable!(),
         }
     }
 

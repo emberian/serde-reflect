@@ -1,0 +1,25 @@
+[package]
+name = "serde-reflect"
+version = "0.1.0"
+authors = ["ember arlynx <ember.arlynx@o1labs.org>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["derive"]
+derive = ["serde-reflect-derive"]
+
+[dependencies]
+erased-serde = "0.3"
+serde = "1.0"
+serde-reflect-derive = { path = "./derive", optional = true }
+memoffset = "0.6"
+slice_dst = "1.5"
+
+[dev-dependencies]
+proptest-derive = "0.2"
+proptest = "0.10"
+serde_json = "1.0"
+serde_derive = "1.0"
+anyhow = "1.0"

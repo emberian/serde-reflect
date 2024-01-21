@@ -12,7 +12,7 @@ pub struct Field<'db> {
     pub shape: DataShape<'db>,
 }
 
-pub struct WithFields<'db, Hdr>(Arc<SliceWithHeader<Hdr, Field<'db>>>);
+//pub struct WithFields<'db, Hdr>(Arc<SliceWithHeader<Hdr, Field<'db>>>);
 
 /// An unnamed field, such as occurs in tuples or tuple-structs etc.
 #[derive(Clone, Debug)]
@@ -21,10 +21,10 @@ pub struct TupleField<'a> {
     pub offset: usize,
     #[cfg(feature = "attrs")]
     pub attrs: Cow<'a, [Attr]>,
-    pub shape: DataShape<'a>,
+    pub shape: alloc::boxed::Box<DataShape<'a>>,
 }
 
-pub struct WithTupleFields<'db, Hdr>(Arc<SliceWithHeader<Hdr, TupleField<'db>>>);
+//pub struct WithTupleFields<'db, Hdr>(Arc<SliceWithHeader<Hdr, TupleField<'db>>>);
 
 /// An `#[attribute]`.
 ///
@@ -64,6 +64,7 @@ pub struct ReflectedType<'a> {
     pub attrs: Cow<'a, [Attr]>,
 }
 
+#[derive(Clone, Debug)]
 pub enum ItemDeclaration<'a> {
     /// `struct Foo(T);`
     Newtype(&'a ReflectedType<'a>),
@@ -128,6 +129,7 @@ pub enum DataShape<'a> {
     Tuple(Cow<'a, [TupleField<'a>]>),
 }
 
+#[derive(Clone, Debug)]
 pub enum RustBuiltin {
     U8,
     I8,
